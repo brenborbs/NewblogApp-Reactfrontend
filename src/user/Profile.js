@@ -4,13 +4,42 @@ import { Redirect, Link } from 'react-router-dom';
 import { read } from './apiUser';
 import DefaultProfile from '../images/avatar.jpg';
 import DeleteUser from './DeleteUser';
+import FollowProfileButton from "./FollowProfileButton"; // ok
+import ProfileTabs from "./ProfileTabs";
+import { listByUser } from "../post/apiPost";
 
  class Profile extends Component {
 
   state = {
-    user: "",
-    redirectToSignin:false
+    user: { following: [] , followers: [] } ,
+    redirectToSignin:false,
+    following: false,
+    error: "",
+    posts: []
   }
+
+  // check follow
+  checkFollow = user => {
+    const jwt = isAuthenticated();
+    const match = user.followers.find(follower => {
+        // one id has many other ids (followers) and vice versa
+        return follower._id === jwt.user._id;
+    });
+    return match;
+};
+
+clickFollowButton = callApi => {
+    const userId = isAuthenticated().user._id;
+    const token = isAuthenticated().token;
+
+    callApi(userId, token, this.state.user._id).then(data => {
+        if (data.error) {
+            this.setState({ error: data.error });
+        } else {
+            this.setState({ user: data, following: !this.state.following });
+        }
+    });
+};
 
   
 
@@ -23,10 +52,23 @@ import DeleteUser from './DeleteUser';
             this.setState({ redirectToSignin: true });
           } else {
             // console.log(data)
-            this.setState({ user: data })
+            let following = this.checkFollow(data);
+            this.setState({ user: data, following });
+            this.loadPosts(data._id);
           }
         })
       }
+
+      loadPosts = userId => {
+        const token = isAuthenticated().token;
+        listByUser(userId, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                this.setState({ posts: data });
+            }
+        });
+    };
 
   componentDidMount = () => {
     //console.log(this.props.match.params.userId)
@@ -41,7 +83,7 @@ import DeleteUser from './DeleteUser';
   }
 
   render() {
-    const { redirectToSignin, user } = this.state;
+    const { redirectToSignin, user, posts } = this.state;
     if(redirectToSignin) return <Redirect to="/signin" />
 
     const photoUrl = user._id
@@ -78,9 +120,17 @@ import DeleteUser from './DeleteUser';
                 </div>
 
                   {isAuthenticated().user && 
-                    isAuthenticated().user._id === user._id && 
+                    isAuthenticated().user._id === user._id ? 
                     (
                       <div className="d-inline-block">
+
+                                <Link
+                                    className="btn btn-raised btn-info mr-5"
+                                    to={`/post/create`}
+                                >
+                                    Create Post
+                                </Link>
+
                           <Link 
                           className="btn btn-raised btn-success mr-5" 
                           to={`/user/edit/${user._id}`}
@@ -89,7 +139,36 @@ import DeleteUser from './DeleteUser';
                           </Link>
                           <DeleteUser userId={user._id} />
                       </div>
+                    ) : (
+                      <FollowProfileButton
+                          following={this.state.following}
+                          onButtonClick={this.clickFollowButton}
+                      />
                     )}
+
+                    <div>
+                            {isAuthenticated().user &&
+                                isAuthenticated().user.role === "admin" && (
+                                    <div class="card mt-5">
+                                        <div className="card-body">
+                                            <h5 className="card-title">
+                                                Admin
+                                            </h5>
+                                            <p className="mb-2 text-danger">
+                                                Edit/Delete as an Admin
+                                            </p>
+                                            <Link
+                                                className="btn btn-raised btn-success mr-5"
+                                                to={`/user/edit/${user._id}`}
+                                            >
+                                                Edit Profile
+                                            </Link>
+                                            <DeleteUser userId={user._id} />
+                                        </div>
+                                    </div>
+                                )}
+                        </div>
+
               </div>
         </div>
           <div className="row">
@@ -97,6 +176,12 @@ import DeleteUser from './DeleteUser';
                         <hr />
                         <p className="lead">{user.about}</p>
                         <hr />
+
+                        <ProfileTabs
+                            followers={user.followers}
+                            following={user.following}
+                            posts={posts}
+                        />
                   </div>
         </div>
       </div>

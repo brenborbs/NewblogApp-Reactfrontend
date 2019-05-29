@@ -1,0 +1,119 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f3f5;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+/*##################################################viewport######################*/
+
+.viewport-80 {
+  min-height: 80vh;
+}
+
+/*##############################################navbar############################*/
+
+.navbar {
+  border-top: 6px solid #F15025 ;
+  background-color: #242a33;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar .navbar-brand {
+  display: block;
+  background-color: #F15025;
+  padding: 15px 40px;
+  font-style: italic;
+  color: #f5f3f5;
+}
+
+.navbar .nav-link {
+  color: #F15025;
+  font-size: 16px;
+  padding: 10px 15px;
+  margin: 0 10px;
+}
+
+.navbar .nav-link:hover {
+  color: #f5f3f5;
+  background-color: #f15025;
+}
+
+/*##################################################viewport######################*/
+
+.viewport-80 {
+  min-height: 80vh;
+}
+
+/*###############################banener###################################*/
+
+#banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  url(../images/shipfront.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* #banner::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgb(36, 42, 51);
+  z-index: -1;
+  bottom: 0;
+  transform-origin: left bottom;
+  transform: skewY(3deg);
+} */
+
+#banner .banner-title {
+  font-style: italic;
+}
+
+#banner .banner-link {
+  text-decoration: none;
+  font-size: 20px;
+  padding: 15px 25px;
+  border: 2px solid #f15025;
+  background-color: transparent;
+  border-radius: 0;
+  color: #f15025;
+}
+
+
+#banner .banner-link:hover {
+  border: 2px solid #f5f3f5;
+  background-color: #f5f3f5;
+}
+
+/* Signin */
+.container_sign {
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* footer*/
+.footer-title {
+  background: #242a33;
+  color: #fff;
+}
+.footer-contact {
+  background: #242a33;
+  color: #fff;
+  /* rgb(238, 238, 238); */
+}
+.footer-icon {
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #fff;
+  -webkit-transition: all 0.4 ease-in-out;
+  transition: all 0.4 ease-in-out;
+}
+.footer-icon:hover {
+  color: #f15025;
+}
