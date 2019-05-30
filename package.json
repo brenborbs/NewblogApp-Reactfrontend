@@ -5,6 +5,7 @@
   "dependencies": {
     "lodash": "4.17.11",
     "react": "^16.8.6",
+    "react-ckeditor-component": "1.0.7",
     "react-dom": "^16.8.6",
     "react-google-login": "5.0.2",
     "react-google-recaptcha": "1.0.5",

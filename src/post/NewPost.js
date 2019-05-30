@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
+// import CKEditor from 'react-ckeditor-component';
 import { create } from "./apiPost";
 import { Redirect } from "react-router-dom";
 
@@ -37,6 +38,11 @@ class NewPost extends Component {
         }
         return true;
     };
+
+    // handleEditorChange = event => {
+    //     const newBody = event.editor.getData();
+    //     this.setState({ body: newBody });
+    //   };
 
     handleChange = name => event => {
         this.setState({ error: "" });
@@ -93,11 +99,17 @@ class NewPost extends Component {
 
             <div className="form-group">
                 <label className="text-muted">Body</label>
+                {/* <CKEditor
+                  name="body"
+                  content={body}
+                  events={{ change: this.handleEditorChange }}
+                /> */}
                 <textarea
                     onChange={this.handleChange("body")}
                     type="text"
                     className="form-control"
                     value={body}
+                    rows="20"
                 />
             </div>
 

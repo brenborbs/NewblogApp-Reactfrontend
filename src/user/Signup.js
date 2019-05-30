@@ -125,7 +125,7 @@ class Signup extends Component {
 
           <button 
               onClick={this.clickSubmit} 
-              className="btn btn-raised btn-primary">
+              className="btn btn-raised btn-secondary">
                   Submit
           </button>
         </form>
@@ -134,11 +134,18 @@ class Signup extends Component {
   render() {
     const { name, email, password, error, open, recaptcha } = this.state;
     return (
-      <div className="container" >
-        <div className="container_sign">
-                <h2 className="mt-5 mb-5" >Signup</h2>
+        <>
+      <div className="sidenav" >
+        <div className="login-main-text">
+                <h2>User<br/> Signup</h2>
+                                    <p>Register here to access the app.</p>
+                                </div>
+                            </div>
 
-                <hr />
+                            <div className="main">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="login-form">
+
                         <SocialLogin />
 
                         <hr />
@@ -160,9 +167,10 @@ class Signup extends Component {
                 </div>
 
                 {this.signupForm(name, email, password, recaptcha)}
-
+            </div>
         </div>
       </div>
+    </>
     )
   }
 }

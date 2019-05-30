@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="row">
         <div className="col-md-6 footer-title py-5">
           <h1 className="text-capitalize text-center">
-            <strong className="footer-title">Marine Hack</strong>
+            <strong className="footer-title">Marine Hacks</strong>
           </h1>
           <div className="footer-icons mt-3 d-flex justify-content-around flex-wrap">
             <Link to="#" className="footer-icon">

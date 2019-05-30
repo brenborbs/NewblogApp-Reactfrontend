@@ -57,7 +57,7 @@ class Posts extends Component {
                                     onError={i =>
                                         (i.target.src = `${DefaultPost}`)
                                     }
-                                    className="img-thunbnail mb-3"
+                                    className="img-thumbnail mb-3"
                                     style={{ height: "200px", width: "100%" }}
                                 />
                                 <h5 className="card-title">{post.title}</h5>
@@ -74,7 +74,7 @@ class Posts extends Component {
                                 </p>
                                 <Link
                                     to={`/post/${post._id}`}
-                                    className="btn btn-raised btn-primary btn-sm"
+                                    className="btn btn-raised btn-warning btn-sm"
                                 >
                                     Read more
                                 </Link>
@@ -98,7 +98,7 @@ class Posts extends Component {
 
                 {page > 1 ? (
                     <button
-                        className="btn btn-raised btn-warning mr-5 mt-5 mb-5"
+                        className="btn btn-raised btn-info mr-5 mt-5 mb-5"
                         onClick={() => this.loadLess(1)}
                     >
                         Previous ({this.state.page - 1})
@@ -109,7 +109,7 @@ class Posts extends Component {
 
                 {posts.length ? (
                     <button
-                        className="btn btn-raised btn-success mt-5 mb-5"
+                        className="btn btn-raised btn-dark mt-5 mb-5"
                         onClick={() => this.loadMore(1)}
                     >
                         Next ({page + 1})

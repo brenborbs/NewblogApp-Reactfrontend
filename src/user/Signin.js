@@ -127,7 +127,7 @@ class Signin extends Component {
 
                                 <button 
                                     onClick={this.clickSubmit} 
-                                    className="btn btn-raised btn-primary">
+                                    className="btn btn-raised btn-secondary">
                                         Submit
                                 </button>
                                 </form>
@@ -141,44 +141,52 @@ class Signin extends Component {
                         }
 
                         return (
-                        <div className="container" >
-                            <div className="container_sign">
-                            <h2 className="mt-5 mb-5" >Signin</h2>
+                        <>
+                            <div className="sidenav" >
+                                <div className="login-main-text">
+                                    <h2>User <br/> Signin</h2>
+                                    <p>Login here to access the app</p>
+                                </div>
+                            </div>
 
-                    <hr />
-                            <SocialLogin />
+                            <div className="main">
+                                <div className="col-md-6 col-sm-12">
+                                    <div className="login-form">
+                                                {/* <hr /> */}
+                                                <SocialLogin />
+                                                <hr />
+                                                <br />
 
-                            <hr />
-                            <br />
+                                        <div 
+                                            className="alert alert-danger" 
+                                            style={{ display: error ? "" : "none" }} 
+                                            >
+                                        {error}
+                                        </div>
 
-                    <div 
-                        className="alert alert-danger" 
-                        style={{ display: error ? "" : "none" }} 
-                        >
-                    {error}
-                    </div>
+                                        {loading ? ( 
+                                        <div className="jumbotron text-center">
+                                        <h2>Please wait while app is loading...</h2>
+                                        </div> 
+                                        ) : ( 
+                                        "" 
+                                        )}
 
-                    {loading ? ( 
-                    <div className="jumbotron text-center">
-                    <h2>Loading...</h2>
-                    </div> 
-                    ) : ( 
-                    "" 
-                    )}
+                                        {this.signinForm(email, password, recaptcha)}
 
-                    {this.signinForm(email, password, recaptcha)}
-
-                            <p>
-                                <Link
-                                    to="/forgot-password"
-                                    className="btn btn-raised btn-danger"
-                                >
-                                    {" "}
-                                    Forgot Password
-                                </Link>
-                            </p>
-        </div>
-      </div>
+                                            <p>
+                                                <Link
+                                                    to="/forgot-password"
+                                                    className="btn btn-raised btn-danger"
+                                                >
+                                                    {" "}
+                                                    Forgot Password
+                                                </Link>
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                    </>   
     )
   }
 }

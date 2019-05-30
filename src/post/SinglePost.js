@@ -92,6 +92,10 @@ class SinglePost extends Component {
 
         return (
             <div className="card-body">
+                <p className="font-italic mark">
+                    Posted by <Link to={`${posterId}`}>{posterName} </Link>
+                    on {new Date(post.created).toDateString()}
+                </p>
                 <img
                     src={`${process.env.REACT_APP_API_URL}/post/photo/${
                         post._id
@@ -101,7 +105,7 @@ class SinglePost extends Component {
                     className="img-thunbnail mb-3"
                     style={{
                         height: "300px",
-                        width: "100%",
+                        width: "90%",
                         objectFit: "cover"
                     }}
                 />
@@ -124,12 +128,16 @@ class SinglePost extends Component {
                     </h3>
                 )}
 
-                <p className="card-text">{post.body}</p>
+                <p className="body-main">{post.body}</p>
+                {/* <div
+                className="card-text"
+                dangerouslySetInnerHTML={{
+                  __html: post.body
+                }}
+              /> */}
+
                 <br />
-                <p className="font-italic mark">
-                    Posted by <Link to={`${posterId}`}>{posterName} </Link>
-                    on {new Date(post.created).toDateString()}
-                </p>
+                
                 <div className="d-inline-block">
                     <Link
                         to={`/`}
@@ -159,7 +167,7 @@ class SinglePost extends Component {
                     <div>
                         {isAuthenticated().user &&
                             isAuthenticated().user.role === "admin" && (
-                                <div class="card mt-5">
+                                <div className="card mt-5">
                                     <div className="card-body">
                                         <h5 className="card-title">Admin</h5>
                                         <p className="mb-2 text-danger">
@@ -196,23 +204,31 @@ class SinglePost extends Component {
         }
 
         return (
-            <div className="container">
-                <h2 className="display-2 mt-5 mb-5">{post.title}</h2>
+            <div className="row" style={{ 
+                marginTop: '100px', marginLeft: '40px', marginBottom: '30px' }} > 
+                        <div className="col-12 col-md-8">
+                            <div className="">
+                                <h4>{post.title}</h4>
 
-                {!post ? (
-                    <div className="jumbotron text-center">
-                        <h2>Loading...</h2>
+                                    {!post ? (
+                                        <div className="jumbotron text-center">
+                                            <h2>Loading...</h2>
+                                        </div>
+                                    ) : (
+                                        this.renderPost(post)
+                                    )}
+
+                                    <Comment
+                                        postId={post._id}
+                                        comments={comments.reverse()}
+                                        updateComments={this.updateComments}
+                                    />
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                                    {/* Right */}
+                        </div>
                     </div>
-                ) : (
-                    this.renderPost(post)
-                )}
-
-                <Comment
-                    postId={post._id}
-                    comments={comments.reverse()}
-                    updateComments={this.updateComments}
-                />
-            </div>
         );
     }
 }
