@@ -1,16 +1,20 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Lora", serif;
   background-color: #f5f3f5;
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+.home_container {
+  margin: 20px 40px 10px 40px;
 }
 
 /*##############################################navbar############################*/
 
 .navbar {
-  border-top: 6px solid #F15025 ;
+  border-top: 6px solid #f15025;
   background-color: #242a33;
   padding: 0;
   margin: 0;
@@ -18,14 +22,14 @@ body {
 
 .navbar .navbar-brand {
   display: block;
-  background-color: #F15025;
+  background-color: #f15025;
   padding: 15px 40px;
   font-style: italic;
   color: #f5f3f5;
 }
 
 .navbar .nav-link {
-  color: #F15025;
+  color: #f15025;
   font-size: 16px;
   padding: 10px 15px;
   margin: 0 10px;
@@ -46,7 +50,7 @@ body {
 
 #banner {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-  url(../images/shipfront.jpg);
+    url(../images/shipfront.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -79,7 +83,6 @@ body {
   color: #f15025;
 }
 
-
 #banner .banner-link:hover {
   border: 2px solid #f5f3f5;
   background-color: #f5f3f5;
@@ -91,15 +94,14 @@ body {
   width: 80%;
 }
 
-.main-head{
+.main-head {
   height: 150px;
-  background: #FFF;
- 
+  background: #fff;
 }
 
 .sidenav {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-  url(../images/milind-kaduskar-87655-unsplash.jpg);
+    url(../images/milind-kaduskar-87655-unsplash.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -113,58 +115,59 @@ body {
   padding-top: 20px;
 }
 
-
 .main {
   padding: 0px 10px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {
+    padding-top: 15px;
+  }
 }
 
 @media screen and (max-width: 450px) {
-  .login-form{
-      margin-top: 10%;
+  .login-form {
+    margin-top: 10%;
   }
 
-  .register-form{
-      margin-top: 10%;
-  }
-}
-
-@media screen and (min-width: 768px){
-  .main{
-      margin-left: 40%; 
-  }
-
-  .sidenav{
-      width: 40%;
-      position: fixed;
-      /* z-index: 1; */
-      top: 0;
-      left: 0;
-  }
-
-  .login-form{
-      margin-top: 80%;
-  }
-
-  .register-form{
-      margin-top: 20%;
+  .register-form {
+    margin-top: 10%;
   }
 }
 
-.login-main-text{
+@media screen and (min-width: 768px) {
+  .main {
+    margin-left: 40%;
+  }
+
+  .sidenav {
+    width: 40%;
+    position: fixed;
+    /* z-index: 1; */
+    top: 0;
+    left: 0;
+  }
+
+  .login-form {
+    margin-top: 80%;
+  }
+
+  .register-form {
+    margin-top: 20%;
+  }
+}
+
+.login-main-text {
   margin-top: 20%;
   padding: 60px;
   color: #fff;
 }
 
-.login-main-text h2{
+.login-main-text h2 {
   font-weight: 300;
 }
 
-.btn-black{
+.btn-black {
   background-color: #000 !important;
   color: #fff;
 }
@@ -201,7 +204,6 @@ body {
 .contentwrapper {
   float: left;
   width: 100%;
-
 }
 .content {
   margin-right: 321px;
@@ -211,19 +213,217 @@ body {
 }
 .article {
   min-height: 400px;
-    padding-right: 0;
-    position: relative;
-    overflow: hidden;
+  padding-right: 0;
+  position: relative;
+  overflow: hidden;
 }
 .content h1 {
   color: #253657;
 }
 .post-body {
   width: 400px;
-    max-width: 100%;
-    float: left;
-    margin-right: 20px;
+  max-width: 100%;
+  float: left;
+  margin-right: 20px;
 }
 .body-main {
   word-spacing: 8px;
+}
+
+.lh-copy {
+  line-height: 1.5;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.pa3 {
+  padding: 1rem;
+}
+
+.f2 {
+  font-size: 2.25rem;
+}
+
+.f5 {
+  font-size: 1rem;
+}
+
+.measure {
+  max-width: 30em;
+}
+
+@media screen and (min-width: 30em) {
+  .pa5-ns {
+    padding: 4rem;
+  }
+}
+
+.bl {
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+
+.b--gold {
+  border-color: #ffb700;
+}
+
+.bw1 {
+  border-width: 0.125rem;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.sans-serif {
+  font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
+    "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif;
+}
+
+.georgia {
+  font-family: georgia, serif;
+}
+
+.i {
+  font-style: italic;
+}
+
+.fw1 {
+  font-weight: 100;
+}
+
+.tracked {
+  letter-spacing: 0.1em;
+}
+
+.tracked-tight {
+  letter-spacing: -0.05em;
+}
+
+.lh-title {
+  line-height: 1.25;
+}
+
+.lh-copy {
+  line-height: 1.5;
+}
+
+.mw9 {
+  max-width: 96rem;
+}
+
+.black-80 {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.white {
+  color: #fff;
+}
+
+.bg-black-90 {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.bg-gold {
+  background-color: #ffb700;
+}
+
+.pa1 {
+  padding: 0.25rem;
+}
+
+.pa4 {
+  padding: 2rem;
+}
+
+.pl4 {
+  padding-left: 2rem;
+}
+
+.mb2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb4 {
+  margin-bottom: 2rem;
+}
+
+.mv0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ttu {
+  text-transform: uppercase;
+}
+
+.f2 {
+  font-size: 2.25rem;
+}
+
+.f3 {
+  font-size: 1.5rem;
+}
+
+.f5 {
+  font-size: 1rem;
+}
+
+.f6 {
+  font-size: 0.875rem;
+}
+
+.measure {
+  max-width: 30em;
+}
+
+.measure-narrow {
+  max-width: 20em;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 30em) {
+  .pt5-ns {
+    padding-top: 4rem;
+  }
+
+  .f3-ns {
+    font-size: 1.5rem;
+  }
+
+  .f4-ns {
+    font-size: 1.25rem;
+  }
+
+  .f5-ns {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 30em) and (max-width: 60em) {
+  .f1-m {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .mw9-l {
+    max-width: 96rem;
+  }
+
+  .ph7-l {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .f-headline-l {
+    font-size: 6rem;
+  }
 }

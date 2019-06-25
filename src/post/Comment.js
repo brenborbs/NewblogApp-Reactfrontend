@@ -82,9 +82,9 @@ class Comment extends Component {
         const { error } = this.state;
 
         return (
-            <div>
-                <h2 className="mt-5 mb-5">Leave a comment</h2>
-
+            <div className="card my-4" >
+                <h2 className="card-header">Leave a comment</h2>
+                <div className="card-body">
                 <form onSubmit={this.addComment}>
                     <div className="form-group">
                         <input
@@ -99,6 +99,8 @@ class Comment extends Component {
                         </button>
                     </div>
                 </form>
+                </div>
+                
 
                 <div
                     className="alert alert-danger"
@@ -108,7 +110,7 @@ class Comment extends Component {
                 </div>
 
                 <div className="col-md-12">
-                    <h3 className="text-primary">{comments.length} Comments</h3>
+                    <h5 className="mt-0">{comments.length} Comments</h5>
                     <hr />
                     {comments.map((comment, i) => (
                         <div key={i}>
@@ -171,6 +173,6 @@ class Comment extends Component {
             </div>
         );
     }
-}
+} 
 
 export default Comment;

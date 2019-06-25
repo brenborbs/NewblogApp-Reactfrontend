@@ -1,16 +1,12 @@
-import React from 'react';
-import Banner from './HomeBanner';
+import React from "react";
+import Banner from "./HomeBanner";
 import Posts from "../post/Posts";
 
 const Home = () => (
-  <>
-    <div>
+  <React.Fragment>
     <Banner />
-    </div>
-      <div className="container">
-        <Posts />
-      </div>
-  </>
+    <Posts />
+  </React.Fragment>
 );
 
 export default Home;
