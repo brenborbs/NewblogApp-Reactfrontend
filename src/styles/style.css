@@ -10,7 +10,9 @@ body {
 .home_container {
   margin: 20px 40px 10px 40px;
 }
-
+.ql-editor {
+  min-height: 40em !important;
+}
 /*##############################################navbar############################*/
 
 .navbar {
@@ -46,16 +48,23 @@ body {
   min-height: 80vh;
 }
 
-/*###############################banener###################################*/
-
-#banner {
+/*###############################jumbotron###################################*/
+/* Jumbotron */
+.jumbotron {
+  margin-top: 60px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/shipfront.jpg");
+  background-size: cover;
+  color: black;
+}
+/* #banner {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(../images/shipfront.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-}
+} */
 
 /* #banner::after {
   content: '';
@@ -69,7 +78,7 @@ body {
   transform: skewY(3deg);
 } */
 
-#banner .banner-title {
+/* #banner .banner-title {
   font-style: italic;
 }
 
@@ -86,7 +95,7 @@ body {
 #banner .banner-link:hover {
   border: 2px solid #f5f3f5;
   background-color: #f5f3f5;
-}
+} */
 
 /* Signin */
 .container_sign {

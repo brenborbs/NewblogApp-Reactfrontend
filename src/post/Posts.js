@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { list } from "./apiPost";
 import DefaultPost from "../images/mountains.jpg";
 import { Link } from "react-router-dom";
+import renderHTML from "react-render-html";
 
 class Posts extends Component {
   state = {
@@ -9,6 +10,7 @@ class Posts extends Component {
     page: 1
   };
 
+  // load posts function for lifecycle
   loadPosts = page => {
     list(page).then(data => {
       if (data.error) {
@@ -18,7 +20,7 @@ class Posts extends Component {
       }
     });
   };
-
+  // load posts lifecycle
   componentDidMount = () => {
     this.loadPosts(this.state.page);
   };
@@ -44,9 +46,7 @@ class Posts extends Component {
             <div className="card mb-4" key={i}>
               <div className="view overlay">
                 <img
-                  src={`${process.env.REACT_APP_API_URL}/post/photo/${
-                    post._id
-                  }`}
+                  src={`${process.env.REACT_APP_API_URL}/post/photo/${post._id}`}
                   alt={post.title}
                   onError={i => (i.target.src = `${DefaultPost}`)}
                   className="card-img-top"
@@ -56,7 +56,9 @@ class Posts extends Component {
               </div>
               <div className="card-body">
                 <h4 className="card-title">{post.title}</h4>
-                <p className="card-text">{post.body.substring(0, 100)}...</p>
+                <div className="card-text">
+                  {renderHTML(post.body.substring(0, 100))}...
+                </div>
                 <p className="card-text">
                   Posted by <Link to={`${posterId}`}>{posterName} </Link>
                   on {new Date(post.created).toDateString()}

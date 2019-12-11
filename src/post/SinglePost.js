@@ -3,7 +3,9 @@ import { singlePost, remove, like, unlike } from "./apiPost";
 import DefaultPost from "../images/mountains.jpg";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import renderHTML from "react-render-html";
 import Comment from "./Comment";
+import Spinner from "../helpers/spinner";
 
 class SinglePost extends Component {
   state = {
@@ -107,7 +109,7 @@ class SinglePost extends Component {
         {like ? (
           <h3 onClick={this.likeToggle}>
             <i
-              className="fa fa-thumbs-up text-success bg-dark"
+              className="fa fa-heart-o text-success bg-light"
               style={{ padding: "10px", borderRadius: "50%" }}
             />{" "}
             {likes} Like
@@ -115,14 +117,14 @@ class SinglePost extends Component {
         ) : (
           <h3 onClick={this.likeToggle}>
             <i
-              className="fa fa-thumbs-up text-warning bg-dark"
+              className="fa fa-heart-o text-warning bg-light"
               style={{ padding: "10px", borderRadius: "50%" }}
             />{" "}
             {likes} Like
           </h3>
         )}
         <hr />
-        <p className="lead">{post.body}</p>
+        <div>{renderHTML(post.body)}</div>
 
         <div className="d-inline-block">
           <Link to={`/`} className="btn btn-raised btn-primary btn-sm mr-5">
@@ -188,8 +190,11 @@ class SinglePost extends Component {
         <div className="row">
           <div className="col-lg-8">
             {!post ? (
-              <div className="jumbotron text-center">
-                <h2>Loading...</h2>
+              // <div className="jumbotron text-center">
+              //   <h2>Loading...</h2>
+              // </div>
+              <div style={{ margin: "0 auto", width: "100%" }}>
+                <Spinner />
               </div>
             ) : (
               this.renderPost(post)
